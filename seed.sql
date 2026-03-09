@@ -6,10 +6,10 @@ INSERT INTO categorias (nome, descricao) VALUES
 ('Desobstrução', 'Solicitação para limpar vias obstruídas por escombros ou árvores.');
 
 -- Inserir Usuário Administrador (A senha '123456' virá hasheada, estamos inserindo o hash dela com bcrypt salt 10)
--- BCRYPT hash de '123456' é $2b$10$T87pA9YmJv8I3Kx918lK5.yW.B280r.GqW9X5w5Q9y.R5F9H8g5XW
+-- BCRYPT hash de '123456' é $2b$10$qrjdN/10VQ6klmZ5fOkNteNI5HI6nTghFeOueatJPahU9PbbYcW4u6
 INSERT INTO usuarios (nome, email, senha) VALUES 
-('Administrador Geral', 'admin@central.gov', '$2b$10$T87pA9YmJv8I3Kx918lK5.yW.B280r.GqW9X5w5Q9y.R5F9H8g5XW'),
-('João Cidadão', 'joao@email.com', '$2b$10$T87pA9YmJv8I3Kx918lK5.yW.B280r.GqW9X5w5Q9y.R5F9H8g5XW');
+('Administrador Geral', 'admin@central.gov', '$2b$10$qrjdN/10VQ6klmZ5fOkNteNI5HI6nTghFeOueatJPahU9PbbYcW4u6'),
+('João Cidadão', 'joao@email.com', '$2b$10$qrjdN/10VQ6klmZ5fOkNteNI5HI6nTghFeOueatJPahU9PbbYcW4u6');
 
 -- Inserir alguns chamados
 INSERT INTO chamados (usuario_id, categoria_id, descricao, cep, cidade, uf, prioridade, status) VALUES 
