@@ -28,7 +28,7 @@ app.use('/api/chamados', chamadosRouter);
 app.use('/api/relatorios', relatoriosRouter);
 
 // Tratamento de Rota Não Encontrada
-app.all('*', (req, res, next) => {
+app.all(/(.*)/, (req, res, next) => {
     next(new AppError(`Rota ${req.originalUrl} não foi encontrada neste servidor!`, 404));
 });
 
