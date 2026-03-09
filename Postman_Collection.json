@@ -1,0 +1,212 @@
+{
+	"info": {
+		"name": "Central Comunitaria API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth & Usuarios",
+			"item": [
+				{
+					"name": "Registrar Usuário",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/usuarios/registrar",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "usuarios", "registrar"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Teste Usuario\",\n    \"email\": \"teste@email.com\",\n    \"senha\": \"123456\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Login (Pegar Token)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/usuarios/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "usuarios", "login"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@central.gov\",\n    \"senha\": \"123456\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Meu Perfil",
+					"request": {
+						"auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/usuarios/perfil",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "usuarios", "perfil"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "Listar Categorias",
+					"request": {
+						"auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categorias",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "categorias"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Chamados",
+			"item": [
+				{
+					"name": "Listar Chamados",
+					"request": {
+						"auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/chamados",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "chamados"]
+						}
+					}
+				},
+				{
+					"name": "Abrir Chamado Novo",
+					"request": {
+						"auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/chamados",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "chamados"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoria_id\": 1,\n    \"descricao\": \"Rua alagada com 5 pessoas ilhadas.\",\n    \"cep\": \"01311000\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Atualizar Descrição (UPDATE Seguro)",
+					"request": {
+						"auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+						"method": "PUT",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/chamados/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "chamados", "1"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descricao\": \"Nova descrição de teste\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Evoluir Fluxo de Status",
+					"request": {
+						"auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+						"method": "PATCH",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/chamados/1/status",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "chamados", "1", "status"]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"EM_ATENDIMENTO\"\n}"
+						}
+					}
+				},
+				{
+					"name": "Deletar Chamado (DELETE Seguro)",
+					"request": {
+						"auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/chamados/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "chamados", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Relatórios e Indicadores",
+			"item": [
+				{
+					"name": "Ver Indicadores C/ Join",
+					"request": {
+						"auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/relatorios/indicadores",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "relatorios", "indicadores"]
+						}
+					}
+				},
+				{
+					"name": "Relatório Geral",
+					"request": {
+						"auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/relatorios/geral?status=ABERTO",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "relatorios", "geral"],
+							"query": [
+								{ "key": "status", "value": "ABERTO" }
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "token",
+			"value": "COLOQUE_AQUI_O_TOKEN_APOS_LOGIN_POSTMAN"
+		}
+	]
+}
