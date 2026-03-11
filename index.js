@@ -4,10 +4,8 @@ const db = require('./src/config/database');
 
 const PORT = process.env.PORT || 3000;
 
-// Inicializa o banco de dados (Cria tabelas e seeds se não existirem)
 async function startServer() {
     try {
-        // db é uma instância do Singleton
         await db.initDb();
 
         app.listen(PORT, () => {
