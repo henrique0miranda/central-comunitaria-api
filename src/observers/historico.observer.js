@@ -5,7 +5,6 @@ class StatusEventManager extends EventEmitter { }
 
 const statusEvent = new StatusEventManager();
 
-// O Padrão Observer: Esta função se inscreve para ouvir o evento 'statusChanged'
 statusEvent.on('statusChanged', async (data) => {
     try {
         const { chamadoId, statusAnterior, statusNovo, observacao } = data;
@@ -15,9 +14,9 @@ statusEvent.on('statusChanged', async (data) => {
             statusNovo,
             observacao
         });
-        console.log(`[Observer] Histórico atualizado para chamado ${chamadoId}: ${statusAnterior || 'CRIADO'} -> ${statusNovo}`);
-    } catch (err) {
-        console.error(`[Observer Error] Erro ao salvar histórico do chamado:`, err);
+        console.log(`Histórico atualizado para chamado ${chamadoId}: ${statusAnterior || 'CRIADO'} -> ${statusNovo}`);
+    } catch (erro) {
+        console.error(`Erro ao salvar histórico do chamado:`, erro);
     }
 });
 

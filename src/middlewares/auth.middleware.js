@@ -9,13 +9,12 @@ const authMiddleware = (req, res, next) => {
     }
 
     if (!token) {
-        return next(new AppError('Você não está logado! Por favor, faça login para ter acesso.', 401));
+        return next(new AppError('Você não está logado!', 401));
     }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        // Anexa as informações do usuário do payload do token na request
         req.usuario = {
             id: decoded.id,
             email: decoded.email

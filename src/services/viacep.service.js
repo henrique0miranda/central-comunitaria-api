@@ -7,7 +7,6 @@ class ViaCepService {
             throw new AppError('CEP é obrigatório.', 400);
         }
 
-        // Remove traços e espaços, caso houver
         const cepLimpo = cep.replace(/\D/g, '');
 
         if (cepLimpo.length !== 8) {
@@ -21,7 +20,6 @@ class ViaCepService {
                 throw new AppError('CEP não encontrado na base do ViaCEP.', 404);
             }
 
-            // Retornar apenas os dados relevantes de cidade e estado
             return {
                 cidade: data.localidade,
                 uf: data.uf,

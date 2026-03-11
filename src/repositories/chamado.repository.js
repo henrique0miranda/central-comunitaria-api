@@ -35,7 +35,6 @@ class ChamadoRepository {
             values.push(value);
         }
 
-        // Atualiza apenas se tiver mudado alguma coisa e sempre restrito ao criador (usuario_id) ou se o sistema não necessita, mas como é seguro:
         fields.push("atualizado_em = CURRENT_TIMESTAMP");
 
         const query = `UPDATE chamados SET ${fields.join(', ')} WHERE id = ? AND usuario_id = ?`;
@@ -54,9 +53,8 @@ class ChamadoRepository {
     }
 
     async delete(id, usuarioId) {
-        // Delete seguro, validando o ID e o dono do registro
         const result = await db.run(`DELETE FROM chamados WHERE id = ? AND usuario_id = ?`, [id, usuarioId]);
-        return result.changes > 0; // Quantidade de linhas deletadas
+        return result.changes > 0;
     }
 }
 

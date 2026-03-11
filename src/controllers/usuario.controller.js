@@ -33,7 +33,6 @@ class UsuarioController {
 
     async perfil(req, res, next) {
         try {
-            // req.usuario foi inserido pelo middleware de autenticação
             const usuario = await usuarioService.obterPerfil(req.usuario.id);
 
             res.status(200).json({

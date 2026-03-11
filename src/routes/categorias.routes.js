@@ -4,7 +4,6 @@ const authMiddleware = require('../middlewares/auth.middleware');
 
 const router = express.Router();
 
-// Apenas usuários autenticados podem ver categorias de chamados
 router.use(authMiddleware);
 
 router.get('/', categoriaController.listar);

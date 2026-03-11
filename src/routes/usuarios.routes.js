@@ -7,7 +7,6 @@ const router = express.Router();
 router.post('/registrar', usuarioController.registrar);
 router.post('/login', usuarioController.login);
 
-// Rota protegida
 router.get('/perfil', authMiddleware, usuarioController.perfil);
 
 module.exports = router;
